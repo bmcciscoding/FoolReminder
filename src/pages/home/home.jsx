@@ -1,10 +1,12 @@
 
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text } from '@tarojs/components';
-import './index.scss'
+import { View, Text, Button } from '@tarojs/components';
+import { observer, inject } from '@tarojs/mobx'
 
+@inject('todoStore')
+@observer
 class Home extends Component {
-  
+
   config = {
     navigationBarTitleText: 'Home'
   }
@@ -21,10 +23,29 @@ class Home extends Component {
   componentDidHide () {}
   componentDidCatchError () {}
   componentDidNotFound () {}
+
+  add() {
+    const { todoStore } = this.props
+    todoStore.addTodo({
+      title: 'test'
+    })
+  }
+
   render() {
+    console.log('render...')
+    const { todoStore: { todolist } } = this.props
+    const lists = todolist.map((todo) => {
+      return (
+        <View>
+          <Text>{todo.title}</Text>
+        </View>
+      )
+    })
     return (
       <View>
         <Text>Home</Text>
+        <Button onClick={this.add}>ADD</Button>
+        { lists }
       </View>
     );
   }
