@@ -29,7 +29,7 @@ class Todo  extends Component {
     return (
       <View className='todo'>
         <Text>{ todo.title }</Text>
-        <Button onClick={() => { this.props.onChange(todo) }}>change</Button>
+        <Button onClick={this.props.onChange}>change</Button>
       </View>
     );
   }
