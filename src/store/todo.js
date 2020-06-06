@@ -4,10 +4,12 @@ const todoStore = observable({
 
   todolist: [{
     title: 'xxx',
-    isComplete: false
+    isComplete: false,
+    date: Date()
   }],
 
   addTodo(todo) {
+    todo.date = Date()
     this.todolist = this.todolist.concat([todo])
     console.log(this.todolist.length)
   },

@@ -1,17 +1,24 @@
 .todo {
-  background-color: pink;
+  
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
 }
 
-.completeTodo {
+.complete {
   background-color: aquamarine;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 10px;
 }
+
+.ready {
+  background-color: pink;
+}
+
+
 
 .checkbox {
   border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background-color: pink;
 }
