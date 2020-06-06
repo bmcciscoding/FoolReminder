@@ -29,7 +29,8 @@ class Home extends Component {
   add() {
     const { todoStore } = this.props
     todoStore.addTodo({
-      title: 'test'
+      title: 'test',
+      isComplete: false
     })
   }
 
@@ -38,11 +39,19 @@ class Home extends Component {
     todoStore.changeTodoTitle(todo, `${todo.title} + 1`)
   }
 
+  completeTodo(todo) {
+    this.props.todoStore.complete(todo)
+  }
+
   render() {
-    console.log('render...')
     const { todoStore: { todolist } } = this.props
     const lists = todolist.map((todo) => {
-      return (<Todo key={todo.title} todo={todo} onChange={this.changeTodo.bind(this, todo)} />)
+      return (<Todo 
+        key={todo.title} 
+        todo={todo} 
+        onComplete={this.completeTodo.bind(this, todo)}
+        onChange={this.changeTodo.bind(this, todo)}
+      />)
     })
     return (
       <View>

@@ -1,6 +1,7 @@
 
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Button } from '@tarojs/components';
+import { View, Text, Button, Icon, Checkbox, CheckboxGroup } from '@tarojs/components';
+import { AtCheckbox } from 'taro-ui'
 import './todo.css'
 
 class Todo  extends Component {
@@ -17,18 +18,15 @@ class Todo  extends Component {
   componentDidCatchError () {}
   componentDidNotFound () {}
 
-  changeName() {
-    console.log('father') 
-    const { todo } = this.props
-    todo.title = 'xx ! xx'
-  }
-
   render() {
     const { todo } = this.props
-    console.log(this.props)
     return (
-      <View className='todo'>
-        <Text>{ todo.title }</Text>
+      <View className={todo.isComplete ? 'completeTodo' : 'todo'}>
+      <CheckboxGroup onChange={this.props.onComplete}>
+        <Checkbox value={todo.isComplete} checked={todo.isComplete}>{todo.title}</Checkbox>
+      </CheckboxGroup>
+
+        <Button></Button>
         <Button onClick={this.props.onChange}>change</Button>
       </View>
     );
