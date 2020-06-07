@@ -1,0 +1,6 @@
+.ani {
+  background-color: darksalmon;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}

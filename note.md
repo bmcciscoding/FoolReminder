@@ -13,3 +13,35 @@ React 是前端框架，Taro 是京东团队出的小程序框架。
 }
 ```
 
+### 动画
+
+```react
+start() {
+  // create animation
+  var ani = Taro.createAnimation({
+    duration: 1000,
+    timingFunction: "ease",
+    delay: 0
+  })
+
+  // set animation 
+  ani
+    .backgroundColor('#666666')
+    .rotate(30)
+    .left(100)
+    .step() // 决定一步动画完成
+  this.setState({
+      ani: ani.export() // 导出动画
+  });
+}
+
+render() {
+  const { ani } = this.state  // 赋值给组件
+  return (
+  	<View>
+      <View animation={ani}></View> 
+    </View>
+  )
+}
+```
+

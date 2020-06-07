@@ -36,11 +36,56 @@ class Home extends Component {
 
   completeTodo(todo) {
     todo.isComplete = !todo.isComplete
-    console.log(todo)
     this.props.todoStore.update(todo)
   }
 
+  sametimeAni() {
+    var ani = Taro.createAnimation({
+      duration: 1000,
+      timingFunction: "ease",
+      delay: 0
+    })
+
+    ani
+      .backgroundColor('#666666').opacity(0.5).rotate(90)
+      .step()
+    this.setState({
+        ani: ani.export()
+    });
+  }
+
+  stepToStep() {
+    var ani = Taro.createAnimation({
+      duration: 1000,
+      timingFunction: "ease",
+      delay: 0
+    })
+
+    ani
+      .backgroundColor('#666666')
+      .step() 
+      .rotate(45)
+      .step()
+      .opacity(0.5)
+      .step()
+    this.setState({
+        ani: ani.export()
+    });
+
+    this.ani = ani
+  }
+
+  aniStart(e) {
+    console.log('ani start')
+  }
+
+  aniEnd(e) {
+    console.log('ani end')
+  }
+
   render() {
+    const { ani } = this.state
+    console.log('ani', ani)
     const { todoStore: { todolist } } = this.props
     const lists = todolist.map((todo) => {
       return (<Todo 
@@ -51,8 +96,16 @@ class Home extends Component {
     })
     return (
       <View>
-        <Text>Home</Text>
         <Button onClick={this.add}>ADD</Button>
+        <View 
+          className='ani' 
+          animation={ani}
+          onAnimationStart={this.aniStart.bind(this)}
+          onAnimationEnd={this.aniEnd.bind(this)}
+        >
+          <Text onClick={this.sametimeAni}>same time</Text>
+          <Text onClick={this.stepToStep}>step to step</Text>
+        </View> 
         { lists }
       </View>
     );

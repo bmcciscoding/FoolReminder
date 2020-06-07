@@ -7,6 +7,10 @@
   border-radius: 20px;
 }
 
+.todo {
+  transition: 1s background-color;
+}
+
 .complete {
   background-color: darkseagreen;
 }
@@ -52,3 +56,9 @@
   font-size: 20px;
   font-weight: 300;
 }
+
+.home {
+  background-color: darkkhaki;
+  column-rule: darkorange;
+}
+
