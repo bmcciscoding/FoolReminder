@@ -6,7 +6,7 @@ import counterStore from './store/counter'
 import todoStore from './store/todo'
 
 import './app.css'
-// eslint-disable-next-line import/first
+
 import 'taro-ui/dist/style/index.scss' 
 
 // 如果需要在 h5 环境中开启 React Devtools

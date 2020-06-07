@@ -1,8 +1,10 @@
 
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Button, Icon, Checkbox, CheckboxGroup } from '@tarojs/components';
+import { View, Text, Button, Icon, Checkbox, CheckboxGroup, Image } from '@tarojs/components';
 import { AtCheckbox } from 'taro-ui'
 import './todo.css'
+
+import "taro-ui/dist/style/components/flex.scss";
 
 class Todo  extends Component {
   constructor (props) {
@@ -18,21 +20,13 @@ class Todo  extends Component {
   componentDidCatchError () {}
   componentDidNotFound () {}
 
-  show() {
-    console.log('xxxxx')
-  }
-
   render() {
     const { todo } = this.props
     return (
       <View className={`todo ${todo.isComplete ? 'complete' : 'ready'}`}>
-        <View className='checkbox' onClick={this.show}>
-
-        </View>
-        {/* <Text>{`${todo.date.getMonth()} ${todo.date.getDay()}`}</Text> */}
-        <CheckboxGroup onChange={this.props.onComplete}>
-          <Checkbox value={todo.isComplete} checked={todo.isComplete}>{todo.title}</Checkbox>
-        </CheckboxGroup>
+        <Image className={`checkbox ${todo.isComplete ? 'checked' : 'unchecked'}`} onClick={this.props.onComplete}></Image>
+        <Text className={`title ${todo.isComplete ? 'title_complete' : 'title_uncomplete'}`}>{todo.title}</Text>
+        <Text className='date'>{`${todo.date.getMonth() + 1}-${todo.date.getDate()}`}</Text>
       </View>
     );
   }

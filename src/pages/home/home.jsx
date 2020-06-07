@@ -34,13 +34,10 @@ class Home extends Component {
     })
   }
 
-  changeTodo(todo) {
-    const { todoStore } = this.props
-    todoStore.changeTodoTitle(todo, `${todo.title} + 1`)
-  }
-
   completeTodo(todo) {
-    this.props.todoStore.complete(todo)
+    todo.isComplete = !todo.isComplete
+    console.log(todo)
+    this.props.todoStore.update(todo)
   }
 
   render() {
@@ -50,7 +47,6 @@ class Home extends Component {
         key={todo.title} 
         todo={todo} 
         onComplete={this.completeTodo.bind(this, todo)}
-        onChange={this.changeTodo.bind(this, todo)}
       />)
     })
     return (
