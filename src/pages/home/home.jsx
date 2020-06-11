@@ -65,7 +65,6 @@ class Home extends Component {
     })
     return (
       <View>
-        <Button onClick={this.add}>ADD</Button>
         { lists }
       </View>
     );
