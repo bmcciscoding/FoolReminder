@@ -2,15 +2,15 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Button } from '@tarojs/components';
 import { observer, inject } from '@tarojs/mobx'
-import './home.css'
+
 import Todo from '../../components/todo'
 
 @inject('todoStore')
 @observer
-class Home extends Component {
+class CreateTodo extends Component {
 
   config = {
-    navigationBarTitleText: 'Home',
+    navigationBarTitleText: 'CreateTodo',
     enablePullDownRefresh: true
   }
 
@@ -41,15 +41,7 @@ class Home extends Component {
   }
 
   onPullDownRefresh() {
-    Taro.navigateTo({
-      url: '/pages/createTodo/createTodo',
-      success: (res) => {
-        console.log(res)
-      },
-      fail: (res) => {
-        console.log(res)
-      }
-    })
+    
   }
 
   render() {
@@ -71,4 +63,4 @@ class Home extends Component {
     );
   }
 }
-export default Home; 
+export default CreateTodo; 

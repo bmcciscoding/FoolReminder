@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
 import Home from './pages/home'
+import CreateTodo from './pages/createTodo'
 
 import counterStore from './store/counter'
 import todoStore from './store/todo'
@@ -25,7 +26,8 @@ class App extends Component {
   config = {
     pages: [
       'pages/home/home',
-      'pages/index/index'
+      'pages/index/index',
+      'pages/createTodo/createTodo'
     ],
     window: {
       backgroundTextStyle: 'light',

@@ -2,6 +2,44 @@
 
 React 是前端框架，Taro 是京东团队出的小程序框架。
 
+
+## React 
+
+**事件绑定**
+
+```jsx
+work() {
+
+}
+
+work1(p1, e) {
+  
+}
+
+render() {
+  return (
+    <View onClick={this.work}></View>
+    <View onClick={this.work.bind(this, p1)}></View>
+  )
+}
+```
+
+**导航**
+
+```jsx
+Taro.navigateTo({
+  url: '/pages/createTodo/createTodo', // 对应 app config pages
+  success: (res) => {
+    console.log(res)
+  },
+  fail: (res) => {
+    console.log(res)
+  }
+})
+```
+
+
+
 ## CSS
 
 **文字对其线不居中**，可以看到偏下一些
