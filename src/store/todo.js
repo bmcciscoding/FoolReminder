@@ -5,11 +5,11 @@ const todoStore = observable({
   todolist: [{
     title: '看电影abjxxxgll',
     isComplete: false,
-    date: new Date()
+    createDate: new Date()
   }],
 
   addTodo(todo) {
-    todo.date = new Date()
+    todo.createDate = new Date()
     this.todolist = [todo, ...this.todolist]
   },
 

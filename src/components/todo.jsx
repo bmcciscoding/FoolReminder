@@ -46,7 +46,7 @@ class Todo  extends Component {
       <View className={`todo ${todo.isComplete ? 'complete' : 'ready'}`}>
         <Image className={`checkbox ${todo.isComplete ? 'checked' : 'unchecked'}`} onClick={this.props.onComplete}></Image>
         <Text className={`title ${todo.isComplete ? 'title_complete' : 'title_uncomplete'}`}>{todo.title}</Text>
-        <Text className='date'>{`${todo.date.getMonth() + 1}-${todo.date.getDate()}`}</Text>
+        <Text className='date'>{`${todo.createDate.getMonth() + 1}-${todo.createDate.getDate()}`}</Text>
         <Text onClick={this.open}>{isClose ? '⬇️' : '⬆️'}</Text>
         { closeUI }
       </View>

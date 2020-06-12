@@ -22,8 +22,8 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/createTodo/createTodo',
       'pages/home/home',
+      'pages/createTodo/createTodo',
       'pages/index/index',
     ],
     window: {
