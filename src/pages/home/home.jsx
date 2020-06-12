@@ -5,8 +5,6 @@ import { observer, inject } from '@tarojs/mobx'
 import { AtFab } from 'taro-ui'
 import Todo from '../../components/todo'
 
-import './home.css'
-
 @inject('todoStore')
 @observer
 class Home extends Component {

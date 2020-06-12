@@ -1,16 +1,30 @@
 
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Button } from '@tarojs/components';
-import { observer, inject } from '@tarojs/mobx'
+
+import { View, Text, Button, Picker } from '@tarojs/components';
+
+import { 
+  AtButton,
+  AtInput,
+  AtList,
+  AtListItem,
+  AtTag,
+  AtActionSheet,
+  AtActionSheetItem
+} from 'taro-ui'
 
 import Todo from '../../components/todo'
 
-@inject('todoStore')
-@observer
+import './createTodo.scss'
+
+// import { observer, inject } from '@tarojs/mobx'
+
+// @inject('todoStore')
+// @observer
 class CreateTodo extends Component {
 
   config = {
-    navigationBarTitleText: 'CreateTodo',
+    navigationBarTitleText: '创建一个新的 TODO',
     enablePullDownRefresh: true
   }
 
@@ -40,25 +54,64 @@ class CreateTodo extends Component {
     this.props.todoStore.update(todo)
   }
 
-  onPullDownRefresh() {
-    
+  createNewTodo() {
+
   }
 
   render() {
-    const { ani } = this.state
-    console.log('ani', ani)
-    const { todoStore: { todolist } } = this.props
-    const lists = todolist.map((todo) => {
-      return (<Todo 
-        key={todo.title} 
-        todo={todo} 
-        onComplete={this.completeTodo.bind(this, todo)}
-      />)
-    })
     return (
       <View>
-        <Button onClick={this.add}>ADD</Button>
-        { lists }
+        <AtInput
+          title='标题'
+          maxLength={14}
+          placeholder='最多14个汉字'
+        ></AtInput>
+        <Picker mode='time'>
+          <AtList>
+            <AtListItem title='dead line' extraText='12:01'></AtListItem>
+          </AtList>
+        </Picker>
+        <View className='tagslist'>
+          <Text className='tag_title'>标签</Text>
+          <AtTag size='small' circle='true'>工作</AtTag>
+          <AtTag size='small' circle='true'>家庭</AtTag>
+          <AtTag size='small' circle='true'>项目</AtTag>
+          <AtTag size='small' circle='true'>兴趣</AtTag>
+        </View>
+        <View className='tagslist'>
+          <Text className='tag_title'>频率</Text>
+          <AtTag size='small' circle='true'>一次</AtTag>
+          <AtTag size='small' circle='true'>工作日</AtTag>
+          <AtTag size='small' circle='true'>周末</AtTag>
+          <AtTag size='small' circle='true'>每天</AtTag>
+        </View>
+        <Picker mode='selector' range={['一次性','工作日','周末','每天']}>
+          <AtList>
+            <AtListItem title='重复模式' extraText='每天'></AtListItem>
+          </AtList>
+        </Picker>
+        <View>
+          <AtActionSheet title='选择频率'>
+            <AtActionSheetItem>
+              一次性
+            </AtActionSheetItem>
+            <AtActionSheetItem>
+              工作日
+            </AtActionSheetItem>
+            <AtActionSheetItem>
+              周末
+            </AtActionSheetItem>
+            <AtActionSheetItem>
+              每天
+            </AtActionSheetItem>
+          </AtActionSheet>
+        </View>
+        <AtButton 
+          type='primary'
+          size='small'
+          onClick={this.createNewTodo}
+        >创建
+        </AtButton>
       </View>
     );
   }

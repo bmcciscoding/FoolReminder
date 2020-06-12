@@ -22,9 +22,9 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/createTodo/createTodo',
       'pages/home/home',
       'pages/index/index',
-      'pages/createTodo/createTodo'
     ],
     window: {
       backgroundTextStyle: 'light',

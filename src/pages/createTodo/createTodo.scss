@@ -1,0 +1,9 @@
+.tagslist {
+  display: flex;
+  padding: 20px;
+
+  .tag_title {
+    flex: 1;
+    font-size: x-large;
+  }
+}
