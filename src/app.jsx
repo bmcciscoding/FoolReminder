@@ -1,14 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
 import Home from './pages/home'
-import CreateTodo from './pages/createTodo'
-
 import counterStore from './store/counter'
 import todoStore from './store/todo'
 
-import './app.css'
-
-import 'taro-ui/dist/style/index.scss' 
+import './app.scss'
+// import 'taro-ui/dist/style/index.scss'
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：

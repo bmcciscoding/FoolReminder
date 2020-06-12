@@ -31,6 +31,7 @@ class Todo  extends Component {
 
   render() {
     const { todo } = this.props
+    
     const { isClose } =  this.state
     let closeUI = isClose ? (
       <View>
@@ -40,12 +41,13 @@ class Todo  extends Component {
         <Text>weather ☔️</Text>
       </View>
     ) : null
+
     return (
       <View className={`todo ${todo.isComplete ? 'complete' : 'ready'}`}>
         <Image className={`checkbox ${todo.isComplete ? 'checked' : 'unchecked'}`} onClick={this.props.onComplete}></Image>
         <Text className={`title ${todo.isComplete ? 'title_complete' : 'title_uncomplete'}`}>{todo.title}</Text>
         <Text className='date'>{`${todo.date.getMonth() + 1}-${todo.date.getDate()}`}</Text>
-        <Text onClick={this.open}>{isClose ? '展开' : '关闭'}</Text>
+        <Text onClick={this.open}>{isClose ? '⬇️' : '⬆️'}</Text>
         { closeUI }
       </View>
     );

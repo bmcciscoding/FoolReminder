@@ -2,8 +2,10 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Button } from '@tarojs/components';
 import { observer, inject } from '@tarojs/mobx'
-import './home.css'
+import { AtFab } from 'taro-ui'
 import Todo from '../../components/todo'
+
+import './home.css'
 
 @inject('todoStore')
 @observer
@@ -66,6 +68,9 @@ class Home extends Component {
     return (
       <View>
         { lists }
+        <AtFab>
+          <Text>ADD</Text>
+        </AtFab>
       </View>
     );
   }
