@@ -30,6 +30,12 @@ class CreateTodo extends Component {
 
   constructor (props) {
     super(props)
+
+    this.setState({
+      frequency: ['一次','工作日','周末','每天'],
+      typetags: ['工作','兴趣','家庭'],
+      todo: {}
+    })
   }
   state={}
   componentWillMount () {}
@@ -58,7 +64,54 @@ class CreateTodo extends Component {
 
   }
 
+  selectFrequencyTag = (f, e) => {
+    const { todo } = this.state
+    todo.frequency = f
+    this.setState({
+      todo: {...todo}
+    })
+  }
+
+  selectTypeTag = (f, e) => {
+    const { todo } = this.state
+    todo.typstag = f
+    this.setState({
+      todo: {...todo}
+    })
+  }
+
   render() {
+    const { todo } = this.state
+    const { frequency } = this.state
+    const frequencyUI = frequency.map((f, index) => {
+      return (
+        <AtTag 
+          key={index}
+          name={f}
+          size='small' 
+          active={f === todo.frequency} 
+          onClick={this.selectFrequencyTag.bind(this, f)}
+        >
+          {f}
+        </AtTag>
+      )
+    })
+
+    const { typetags } = this.state
+    const typetagsUI = typetags.map((f, index) => {
+      return (
+        <AtTag 
+          key={index}
+          name={f}
+          size='small' 
+          active={f === todo.typstag} 
+          onClick={this.selectTypeTag.bind(this, f)}
+        >
+          {f}
+        </AtTag>
+      )
+    })
+
     return (
       <View>
         <AtInput
@@ -72,18 +125,12 @@ class CreateTodo extends Component {
           </AtList>
         </Picker>
         <View className='tagslist'>
-          <Text className='tag_title'>标签</Text>
-          <AtTag size='small' circle='true'>工作</AtTag>
-          <AtTag size='small' circle='true'>家庭</AtTag>
-          <AtTag size='small' circle='true'>项目</AtTag>
-          <AtTag size='small' circle='true'>兴趣</AtTag>
+          <Text className='tag_title'>频率</Text>
+          { frequencyUI }
         </View>
         <View className='tagslist'>
-          <Text className='tag_title'>频率</Text>
-          <AtTag size='small' circle='true'>一次</AtTag>
-          <AtTag size='small' circle='true'>工作日</AtTag>
-          <AtTag size='small' circle='true'>周末</AtTag>
-          <AtTag size='small' circle='true'>每天</AtTag>
+          <Text className='tag_title'>标签</Text>
+          { typetagsUI }
         </View>
         <Picker mode='selector' range={['一次性','工作日','周末','每天']}>
           <AtList>
