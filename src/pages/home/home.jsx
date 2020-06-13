@@ -1,6 +1,6 @@
 
 import Taro, { Component } from '@tarojs/taro';
-import { View, Text, Button } from '@tarojs/components';
+import { View, Text, Button, MovableArea, MovableView } from '@tarojs/components';
 import { observer, inject } from '@tarojs/mobx'
 import { AtFab } from 'taro-ui'
 import Todo from '../../components/todo'
