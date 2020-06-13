@@ -1,0 +1,75 @@
+.todo {
+  padding: 10px;
+  border-radius: 10px;
+
+  .content {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  .complete {
+    background-color: darkseagreen;
+  }
+  
+  .ready {
+    background-color: lightcyan;
+  }
+
+  .checkbox {
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+  }
+
+  .extra-box {
+    display: flex;
+    background-color: lightcyan;
+
+    .extra-box-item {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}
+
+
+
+.checked {
+  background-color: pink;
+}
+
+.unchecked {
+  background-color: aquamarine;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 50px;
+  font-weight: bold;
+  margin-left: 10px;
+  flex: 1;
+}
+
+.title_complete {
+  color: lightgreen;
+  text-decoration-line: line-through;
+}
+
+.title_uncomplete {
+  color: black;
+}
+
+.date {
+  color: darkgray;
+  font-size: 20px;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+.home {
+  background-color: darkkhaki;
+  column-rule: darkorange;
+}
+

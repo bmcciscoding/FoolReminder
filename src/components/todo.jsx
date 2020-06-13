@@ -2,9 +2,8 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Button, Icon, Checkbox, CheckboxGroup, Image } from '@tarojs/components';
 import { AtCheckbox, AtSwipeAction } from 'taro-ui'
-import './todo.css'
 
-import "taro-ui/dist/style/components/flex.scss";
+import './todo.scss'
 
 class Todo  extends Component {
   constructor (props) {
@@ -34,11 +33,10 @@ class Todo  extends Component {
     
     const { isClose } =  this.state
     let closeUI = isClose ? (
-      <View>
-        <Text>tag work</Text>
-        <Text>repeat every work</Text>
-        <Text>emoji 😄</Text>
-        <Text>weather ☔️</Text>
+      <View className='extra-box'>
+        <Text className='extra-box-item'>一次</Text>
+        <Text className='extra-box-item'>😄</Text>
+        <Text className='extra-box-item'>☁️</Text>
       </View>
     ) : null
 
@@ -58,17 +56,23 @@ class Todo  extends Component {
     ]
 
     return (
-      <View className={`todo ${todo.isComplete ? 'complete' : 'ready'}`}>
-        <AtSwipeAction options={actions}>
-        <View className='backgroundColor: red'>
-          <Image className={`checkbox ${todo.isComplete ? 'checked' : 'unchecked'}`} onClick={this.props.onComplete}></Image>
-          <Text className={`title ${todo.isComplete ? 'title_complete' : 'title_uncomplete'}`}>{todo.title}</Text>
-          <Text className='date'>{`${todo.createDate.getMonth() + 1}-${todo.createDate.getDate()}`}</Text>
-          <Text onClick={this.open}>{isClose ? '⬇️' : '⬆️'}</Text>
+      <View>
+        <View className={`${todo.isComplete ? 'complete' : 'ready'}`}>
+          Learn CSS
+        </View>
+        <View className='todo'>
+          <AtSwipeAction options={actions}>
+            <View className={`content ${todo.isComplete ? 'complete' : 'ready'}`}>
+              <Image className={`checkbox ${todo.isComplete ? 'checked' : 'unchecked'}`} onClick={this.props.onComplete}></Image>
+              <Text className={`title ${todo.isComplete ? 'title_complete' : 'title_uncomplete'}`}>{todo.title}</Text>
+              <Text className='date'>{`${todo.createDate.getMonth() + 1}-${todo.createDate.getDate()}`}</Text>
+              <Text onClick={this.open}>{isClose ? '⬇️' : '⬆️'}</Text>
+            </View>
+          </AtSwipeAction>
           { closeUI }
         </View>
-        </AtSwipeAction>
       </View>
+
     );
   }
 }

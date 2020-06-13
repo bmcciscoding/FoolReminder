@@ -48,6 +48,33 @@ Taro.navigateTo({
 
 ## CSS
 
+
+
+### 语法
+```scss
+.todo {
+  padding: 10px;
+  background-color: lightpink;
+
+  // 意味着 如果父节点是 todo 才生效
+  .complete {
+    background-color: darkseagreen;
+  }
+  
+  .ready {
+    background-color: lightcyan;
+  }
+}
+```
+```jsx
+<View className='complete'>Learn CSS</View>     // fail 😭
+<View className='todo'>
+  <View className='complete'}>Learn CSS</View>  // success 😊
+</View>
+```
+
+
+
 ### 细节
 
 **文字对其线不居中**，可以看到偏下一些
