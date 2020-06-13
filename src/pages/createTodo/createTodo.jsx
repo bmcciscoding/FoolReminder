@@ -65,11 +65,7 @@ class CreateTodo extends Component {
   createNewTodo() {
     const { todo } = this.state
     if (!todo.title) {
-      Taro.showToast({
-        title: '请填写标题',
-        icon: 'none',
-        duration: 1500
-      })
+      Taro.fr_showToast('请填写标题')
     } else {
       this.props.todoStore.addTodo(todo)
       Taro.navigateBack({

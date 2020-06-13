@@ -52,9 +52,11 @@ class Home extends Component {
     })
   }
 
+  onUserTouch = (e) => {
+    console.log(e)
+  }
+
   render() {
-    const { ani } = this.state
-    console.log('ani', ani)
     const { todoStore: { todolist } } = this.props
     const lists = todolist.map((todo) => {
       return (<Todo 
@@ -66,9 +68,6 @@ class Home extends Component {
     return (
       <View>
         { lists }
-        <AtFab>
-          <Text>ADD</Text>
-        </AtFab>
       </View>
     );
   }

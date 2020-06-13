@@ -54,6 +54,17 @@ class App extends Component {
     }
   }
 
+  componentWillMount () {
+    console.log('componentWillMount')
+    Taro.fr_showToast = (str) => {
+      Taro.showToast({
+        title: str,
+        icon: 'none',
+        duration: 1000
+      })
+    }
+  }
+
   componentDidMount () {}
 
   componentDidShow () {}
