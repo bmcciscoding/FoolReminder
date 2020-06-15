@@ -30,7 +30,29 @@
     .extra-box-item {
       flex: 1;
       text-align: center;
+      padding: 8px;
     }
+
+    .repeat {
+      @extend .extra-box-item;
+      background-color: darkred;
+    }
+
+    .emotion {
+      @extend .extra-box-item;
+      background-color: darkorange;
+    }
+
+    .weather {
+      @extend .extra-box-item;
+      background-color: darkblue;
+    }
+
+    .delete {
+      @extend .extra-box-item;
+      background-color: darkgray;
+    }
+    
   }
 }
 

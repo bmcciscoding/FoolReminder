@@ -27,13 +27,13 @@ const todoStore = observable({
     todo.createDate = new Date()
     todo.id = todo.createDate.getTime()
     Taro.setStorage({
-      key: todo.id,
+      key: todo.id.toString(),
       data: todo,
       fail: function(res) {
         console.log('set fail', res)
       },
       success: function(res) {
-        // 
+        console.log('set', todo.id)
       }
     })
     this.todolist = [todo, ...this.todolist]

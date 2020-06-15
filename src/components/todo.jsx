@@ -27,17 +27,17 @@ class Todo  extends Component {
       isClose: !this.state.isClose
     })
   }
-  
+
   render() {
     const { todo } = this.props
     
     const { isClose } =  this.state
     let closeUI = isClose ? (
       <View className='extra-box'>
-        <Text className='extra-box-item'>一次</Text>
-        <Text className='extra-box-item'>😄</Text>
-        <Text className='extra-box-item'>☁️</Text>
-        <Text onClick={this.props.onDelete} className='extra-box-item'>🚮</Text>
+        <Text className='repeat'>1️⃣</Text>
+        <Text className='emotion'>😄</Text>
+        <Text className='weather'>⛅️</Text>
+        <Text onClick={this.props.onDelete} className='delete'>🚮</Text>
       </View>
     ) : null
 
