@@ -3,13 +3,17 @@ import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Button, Icon, Checkbox, CheckboxGroup, Image } from '@tarojs/components';
 import { AtCheckbox, AtSwipeAction } from 'taro-ui'
 
+import TodoSelectBox  from './todo-select-box/todo-select-box'
+
 import './todo.scss'
 
 class Todo  extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      isClose: false
+      isClose: false,
+      showSelectRepeat: false,
+      repeat_contents: ['一次','工作日','周末','每天']
     }
   }
   state={}
@@ -28,13 +32,28 @@ class Todo  extends Component {
     })
   }
 
+  showRepeat() {
+    this.setState({
+      showSelectRepeat: !this.state.showSelectRepeat
+    })
+  }
+
+  changeRepeat(index) {
+    const { todo } = this.props
+    const { repeat_contents } =  this.state
+    todo.repeat = repeat_contents[index]
+    this.props.onUpdate(todo)
+  }
+
   render() {
     const { todo } = this.props
-    const { isClose } =  this.state
+
+    const { isClose, showSelectRepeat, repeat_contents } =  this.state
+
     let closeUI = isClose ? (
       <View className='extra-box'>
-        <Text className='repeat'>1️⃣</Text>
-        <Text className='emotion'>😄</Text>
+        <Text className='repeat' onClick={this.showRepeat}>{todo.repeat}</Text>
+        <Text className='emotion'>{todo.emotion}</Text>
         <Text className='weather'>⛅️</Text>
         <Text onClick={this.props.onDelete} className='delete'>🚮</Text>
       </View>
@@ -68,6 +87,9 @@ class Todo  extends Component {
             </View>
           </AtSwipeAction>
           { closeUI }
+          { showSelectRepeat 
+          ? (<TodoSelectBox contents={repeat_contents} onSelectIndex={this.changeRepeat.bind(this)} />) 
+          : null }
         </View>
       </View>
 

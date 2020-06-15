@@ -36,6 +36,9 @@
     .repeat {
       @extend .extra-box-item;
       background-color: darkred;
+      color: white;
+      font-weight: bold;
+      text-align: center;
     }
 
     .emotion {
