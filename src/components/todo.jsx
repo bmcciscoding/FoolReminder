@@ -57,15 +57,13 @@ class Todo  extends Component {
 
     return (
       <View>
-        <View className={`${todo.isComplete ? 'complete' : 'ready'}`}>
-          Learn CSS
-        </View>
         <View className='todo'>
           <AtSwipeAction options={actions}>
             <View className={`content ${todo.isComplete ? 'complete' : 'ready'}`}>
               <Image className={`checkbox ${todo.isComplete ? 'checked' : 'unchecked'}`} onClick={this.props.onComplete}></Image>
               <Text className={`title ${todo.isComplete ? 'title_complete' : 'title_uncomplete'}`}>{todo.title}</Text>
-              <Text className='date'>{`${todo.createDate.getMonth() + 1}-${todo.createDate.getDate()}`}</Text>
+              {/* <Text className='date'>{`${todo.createDate.getMonth() + 1}-${todo.createDate.getDate()}`}</Text> */}
+              {/* <Text>{todo.createDate.getTime()}</Text> */}
               <Text onClick={this.open}>{isClose ? '⬇️' : '⬆️'}</Text>
             </View>
           </AtSwipeAction>

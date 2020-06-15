@@ -16,6 +16,7 @@ class Home extends Component {
 
   constructor (props) {
     super(props)
+    this.props.todoStore.load()
   }
   state={}
   componentWillMount () {}
