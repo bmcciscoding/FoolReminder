@@ -27,7 +27,7 @@ class Todo  extends Component {
       isClose: !this.state.isClose
     })
   }
-
+  
   render() {
     const { todo } = this.props
     
@@ -37,6 +37,7 @@ class Todo  extends Component {
         <Text className='extra-box-item'>一次</Text>
         <Text className='extra-box-item'>😄</Text>
         <Text className='extra-box-item'>☁️</Text>
+        <Text onClick={this.props.onDelete} className='extra-box-item'>🚮</Text>
       </View>
     ) : null
 

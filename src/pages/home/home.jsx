@@ -41,6 +41,10 @@ class Home extends Component {
     this.props.todoStore.update(todo)
   }
 
+  deleteTodo(todo) {
+    this.props.todoStore.delete(todo)
+  }
+
   onPullDownRefresh() {
     Taro.navigateTo({
       url: '/pages/createTodo/createTodo',
@@ -64,6 +68,7 @@ class Home extends Component {
         key={todo.title} 
         todo={todo} 
         onComplete={this.completeTodo.bind(this, todo)}
+        onDelete={this.deleteTodo.bind(this, todo)}
       />)
     })
     return (
