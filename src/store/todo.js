@@ -7,20 +7,7 @@ const todoStore = observable({
   todolist: [],
 
   load() {
-    let that = this
-    Taro.getStorageInfo({
-      success: function(res) {
-        for (let i=0; i<res.keys.length; i++) {
-          const k = res.keys[i]
-          Taro.getStorage({
-            key: k,
-            success: function(d) {
-              that.todolist = [d.data, ...that.todolist]
-            } 
-          })
-        }
-      }
-    })
+
   },
 
   addTodo(todo) {
@@ -49,15 +36,30 @@ const todoStore = observable({
     const idx = this.todolist.indexOf(todo)
     this.todolist.splice(idx, 1)
     try {
-      Taro.removeStorageSync(todo.id)
-      console.log('delete', todo.id)
+      Taro.removeStorageSync(todo.id.toString())
       this.todolist = [...this.todolist]
     } catch (e) {
-      // Do something when catch error
+      console.log('delete err', e)
     }
   }
 })
 
 export default todoStore
+
+
+Taro.getStorageInfo({
+  success: function(res) {
+    for (let i=0; i<res.keys.length; i++) {
+      const k = res.keys[i]
+      Taro.getStorage({
+        key: k,
+        success: function(d) {
+          todoStore.todolist.push(d.data)
+          // that.todolist = [d.data, ...that.todolist]
+        } 
+      })
+    }
+  }
+})
 
 

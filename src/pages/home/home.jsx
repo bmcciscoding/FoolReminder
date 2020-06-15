@@ -65,7 +65,7 @@ class Home extends Component {
     const { todoStore: { todolist } } = this.props
     const lists = todolist.map((todo) => {
       return (<Todo 
-        key={todo.title} 
+        key={todo.id} 
         todo={todo} 
         onComplete={this.completeTodo.bind(this, todo)}
         onDelete={this.deleteTodo.bind(this, todo)}

@@ -27,35 +27,37 @@ class App extends Component {
       'pages/index/index',
     ],
     window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
+      backgroundTextStyle: 'black',
+      navigationBarBackgroundColor: '#ffffff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
     },
     tabBar: {
+      color: '#000000',
+      selectedColor: '#FFAA5A',
+      backgroundColor: '#ffffff',
       list: [
         {
           pagePath: 'pages/home/home',
-          text: 'Home'
+          text: 'TODO'
         },
         {
           pagePath: 'pages/index/index',
-          text: 'Home'
+          text: '一天'
         },
         {
           pagePath: 'pages/index/index',
-          text: 'Home'
+          text: '统计'
         },
         {
           pagePath: 'pages/index/index',
-          text: 'Home'
+          text: '我的'
         }
       ]
     }
   }
 
   componentWillMount () {
-    console.log('componentWillMount')
     Taro.fr_showToast = (str) => {
       Taro.showToast({
         title: str,

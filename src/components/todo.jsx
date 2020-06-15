@@ -30,7 +30,6 @@ class Todo  extends Component {
 
   render() {
     const { todo } = this.props
-    
     const { isClose } =  this.state
     let closeUI = isClose ? (
       <View className='extra-box'>
