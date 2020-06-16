@@ -13,7 +13,10 @@ class Todo  extends Component {
     this.state = {
       isClose: false,
       showSelectRepeat: false,
-      repeat_contents: ['一次','工作日','周末','每天']
+      repeat_contents: ['一次','工作日','周末','每天'],
+
+      showSelectEmotions: false,
+      emotion_contents: ['😁','🙁','😡','😷']
     }
   }
   state={}
@@ -38,6 +41,12 @@ class Todo  extends Component {
     })
   }
 
+  showEmotion() {
+    this.setState({
+      showSelectEmotions: !this.state.showSelectEmotions
+    })
+  }
+
   changeRepeat(index) {
     const { todo } = this.props
     const { repeat_contents } =  this.state
@@ -45,15 +54,33 @@ class Todo  extends Component {
     this.props.onUpdate(todo)
   }
 
+  changeEmotion(index) {
+    const { todo } = this.props
+    const { emotion_contents } =  this.state
+    todo.emotion = emotion_contents[index]
+    this.props.onUpdate(todo)
+  }
+
   render() {
     const { todo } = this.props
+    if (todo == undefined) {
+      return (
+        <View>error</View>
+      )
+    }
 
-    const { isClose, showSelectRepeat, repeat_contents } =  this.state
+    const { 
+      isClose, 
+      showSelectRepeat, 
+      repeat_contents, 
+      showSelectEmotions,
+      emotion_contents
+    } =  this.state
 
     let closeUI = isClose ? (
       <View className='extra-box'>
         <Text className='repeat' onClick={this.showRepeat}>{todo.repeat}</Text>
-        <Text className='emotion'>{todo.emotion}</Text>
+        <Text className='emotion' onClick={this.showEmotion}>{todo.emotion}</Text>
         <Text className='weather'>⛅️</Text>
         <Text onClick={this.props.onDelete} className='delete'>🚮</Text>
       </View>
@@ -89,6 +116,9 @@ class Todo  extends Component {
           { closeUI }
           { showSelectRepeat 
           ? (<TodoSelectBox contents={repeat_contents} onSelectIndex={this.changeRepeat.bind(this)} />) 
+          : null }
+          { showSelectEmotions 
+          ? (<TodoSelectBox contents={emotion_contents} onSelectIndex={this.changeEmotion.bind(this)} />) 
           : null }
         </View>
       </View>

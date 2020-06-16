@@ -1,4 +1,14 @@
 
 .box {
   background-color: lightcoral;
+  display: flex;
+
+  @for $i from 0 through 3 {
+    .item_#{$i} {
+      flex: 1;
+      font-size: 24px;
+      text-align: center;
+      padding: 10px;
+    }
+  }
 }

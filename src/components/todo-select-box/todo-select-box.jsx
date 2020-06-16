@@ -14,7 +14,11 @@ class TodoSelectBox extends Component {
     const { contents } = this.props
     const list = contents ? contents.map((content, index) => {
       return (
-        <Text key={content} onClick={this.props.onSelectIndex.bind(this, index)}>{content}</Text>
+        <Text 
+          className={`item_${index}`}
+          key={content} 
+          onClick={this.props.onSelectIndex.bind(this, index)}
+        >{content}</Text>
       )
     }): null
     return (
