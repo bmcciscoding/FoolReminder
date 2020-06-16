@@ -14,19 +14,19 @@ class Home extends Component {
     enablePullDownRefresh: true
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.props.todoStore.load()
   }
-  state={}
-  componentWillMount () {}
-  componentDidMount () {}
-  componentWillReceiveProps (nextProps,nextContext) {}
-  componentWillUnmount () {}
-  componentDidShow () {}
-  componentDidHide () {}
-  componentDidCatchError () {}
-  componentDidNotFound () {}
+  state = {}
+  componentWillMount() { }
+  componentDidMount() { }
+  componentWillReceiveProps(nextProps, nextContext) { }
+  componentWillUnmount() { }
+  componentDidShow() { }
+  componentDidHide() { }
+  componentDidCatchError() { }
+  componentDidNotFound() { }
 
   add() {
     const { todoStore } = this.props
@@ -68,9 +68,9 @@ class Home extends Component {
   render() {
     const { todoStore: { todolist } } = this.props
     const lists = todolist.map((todo) => {
-      return (<Todo 
-        key={todo.id} 
-        todo={todo} 
+      return (<Todo
+        key={todo.id}
+        todo={todo}
         onComplete={this.completeTodo.bind(this, todo)}
         onDelete={this.deleteTodo.bind(this, todo)}
         onUpdate={this.updateTodo.bind(this, todo)}
@@ -78,7 +78,7 @@ class Home extends Component {
     })
     return (
       <View>
-        { lists }
+        {lists}
       </View>
     );
   }

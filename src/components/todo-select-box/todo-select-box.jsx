@@ -4,8 +4,8 @@ import { View, Text, Button, Icon, Checkbox, CheckboxGroup, Image } from '@taroj
 import './todo-select-box.scss'
 
 class TodoSelectBox extends Component {
-    
-  constructor (props) {
+
+  constructor(props) {
     super(props)
     console.log(props)
   }
@@ -14,16 +14,16 @@ class TodoSelectBox extends Component {
     const { contents } = this.props
     const list = contents ? contents.map((content, index) => {
       return (
-        <Text 
+        <Text
           className={`item_${index}`}
-          key={content} 
+          key={content}
           onClick={this.props.onSelectIndex.bind(this, index)}
         >{content}</Text>
       )
-    }): null
+    }) : null
     return (
       <View className='box'>
-        { list }
+        {list}
       </View>
     )
   }

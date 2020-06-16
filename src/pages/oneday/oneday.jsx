@@ -10,27 +10,27 @@ class OneDay extends Component {
     navigationBarTitleText: '一天'
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     const tasks = Array(24).fill(1)
     this.setState({
-        tasks: tasks
+      tasks: tasks
     })
   }
 
-  componentWillMount () { }
+  componentWillMount() { }
 
-  componentDidMount () { }
+  componentDidMount() { }
 
-  componentWillReact () {
+  componentWillReact() {
     console.log('componentWillReact')
   }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
-  
+  componentDidHide() { }
+
   increment = () => {
     const { counterStore } = this.props
     counterStore.increment()
@@ -46,7 +46,7 @@ class OneDay extends Component {
     counterStore.incrementAsync()
   }
 
-  render () {
+  render() {
 
     const { tasks } = this.state
 
@@ -55,10 +55,10 @@ class OneDay extends Component {
         <View key={task.name}>{task}</View>
       )
     })
-      
+
     return (
       <View className='index'>
-        { tasksui }
+        {tasksui}
       </View>
     )
   }
