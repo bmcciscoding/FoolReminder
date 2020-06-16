@@ -1,6 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
+
 import Home from './pages/home'
+import OneDay from './pages//oneday'
+
 import counterStore from './store/counter'
 import todoStore from './store/todo'
 
@@ -22,6 +25,7 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/oneday/oneday',
       'pages/home/home',
       'pages/createTodo/createTodo',
       'pages/index/index',
@@ -42,7 +46,7 @@ class App extends Component {
           text: 'TODO'
         },
         {
-          pagePath: 'pages/index/index',
+          pagePath: 'pages/oneday/oneday',
           text: '一天'
         },
         {
