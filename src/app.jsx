@@ -25,9 +25,9 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/oneday/oneday',
-      'pages/home/home',
       'pages/createTodo/createTodo',
+      'pages/home/home',
+      'pages/oneday/oneday',
       'pages/index/index',
     ],
     window: {

@@ -2,15 +2,15 @@
 import Taro, { Component } from '@tarojs/taro';
 import { observer, inject } from '@tarojs/mobx'
 
-import { 
-  View, 
-  Text, 
-  Button, 
-  Picker, 
-  Input 
+import {
+  View,
+  Text,
+  Button,
+  Picker,
+  Input
 } from '@tarojs/components';
 
-import { 
+import {
   AtButton,
   AtInput,
   AtList,
@@ -35,24 +35,24 @@ class CreateTodo extends Component {
     enablePullDownRefresh: true
   }
 
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.setState({
-      frequency: ['一次','工作日','周末','每天'],
-      typetags: ['工作','兴趣','家庭'],
+      frequency: ['一次', '工作日', '周末', '每天'],
+      typetags: ['工作', '兴趣', '家庭'],
       todo: {}
     })
   }
-  state={}
-  componentWillMount () {}
-  componentDidMount () {}
-  componentWillReceiveProps (nextProps,nextContext) {}
-  componentWillUnmount () {}
-  componentDidShow () {}
-  componentDidHide () {}
-  componentDidCatchError () {}
-  componentDidNotFound () {}
+  state = {}
+  componentWillMount() { }
+  componentDidMount() { }
+  componentWillReceiveProps(nextProps, nextContext) { }
+  componentWillUnmount() { }
+  componentDidShow() { }
+  componentDidHide() { }
+  componentDidCatchError() { }
+  componentDidNotFound() { }
 
   add() {
     const { todoStore } = this.props
@@ -78,7 +78,7 @@ class CreateTodo extends Component {
     const { todo } = this.state
     todo.frequency = f
     this.setState({
-      todo: {...todo}
+      todo: { ...todo }
     })
   }
 
@@ -86,7 +86,7 @@ class CreateTodo extends Component {
     const { todo } = this.state
     todo.type_tag = f
     this.setState({
-      todo: {...todo}
+      todo: { ...todo }
     })
   }
 
@@ -94,7 +94,7 @@ class CreateTodo extends Component {
     const { todo } = this.state
     todo.deadline = e.timeStamp
     this.setState({
-      todo: {...todo}
+      todo: { ...todo }
     })
   }
 
@@ -102,7 +102,7 @@ class CreateTodo extends Component {
     const { todo } = this.state
     todo.title = e
     this.setState({
-      todo: {...todo}
+      todo: { ...todo }
     })
   }
 
@@ -111,13 +111,13 @@ class CreateTodo extends Component {
     const { frequency } = this.state
     const frequencyUI = frequency.map((f, index) => {
       return (
-        <AtTag 
+        <AtTag
           className='select_tag'
           key={index}
           type='primary'
           name={f}
-          size='small' 
-          active={f === todo.frequency} 
+          size='small'
+          active={f === todo.frequency}
           onClick={this.selectFrequencyTag.bind(this, f)}
         >
           {f}
@@ -128,22 +128,22 @@ class CreateTodo extends Component {
     const { typetags } = this.state
     const typetagsUI = typetags.map((f) => {
       return (
-        <AtTag 
+        <AtTag
           className='select_tag'
           key={f}
           name={f}
           type='primary'
           size='small'
           circle
-          active={f === todo.type_tag} 
+          active={f === todo.type_tag}
           onClick={this.selectTypeTag.bind(this, f)}
         >
-        {f}
-      </AtTag>
+          {f}
+        </AtTag>
         // <View key={f} className='tag'>
 
         // </View>
-        
+
       )
     })
 
@@ -152,9 +152,9 @@ class CreateTodo extends Component {
         <AtInput
           title='标题'
           maxLength={28}
-          placeholder='最多28个汉字'
+          placeholder='为TODO起个名字把，最多15个汉字'
           onChange={this.changeTitle.bind(this)}
-        ></AtInput>        
+        ></AtInput>
         <Picker mode='time' onChange={this.selectTime}>
           <AtList>
             <AtListItem title='dead line' extraText='12:01'></AtListItem>
@@ -162,17 +162,17 @@ class CreateTodo extends Component {
         </Picker>
         <View className='tagslist'>
           <Text className='tag_title'>频率</Text>
-          { frequencyUI }
+          {frequencyUI}
         </View>
         <View className='tagslist'>
           <Text className='tag_title'>标签</Text>
           <View>
-          { typetagsUI }
+            {typetagsUI}
           </View>
         </View>
-        <Picker 
-          mode='selector' 
-          range={['一次性','工作日','周末','每天']}
+        <Picker
+          mode='selector'
+          range={['一次性', '工作日', '周末', '每天']}
         >
           <AtList>
             <AtListItem title='重复模式' extraText='每天'></AtListItem>
@@ -194,7 +194,7 @@ class CreateTodo extends Component {
             </AtActionSheetItem>
           </AtActionSheet>
         </View>
-        <AtButton 
+        <AtButton
           type='primary'
           size='small'
           onClick={this.createNewTodo.bind(this)}

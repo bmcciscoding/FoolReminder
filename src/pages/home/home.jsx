@@ -5,6 +5,8 @@ import { observer, inject } from '@tarojs/mobx'
 import { AtFab } from 'taro-ui'
 import Todo from '../../components/todo'
 
+import './home.scss'
+
 @inject('todoStore')
 @observer
 class Home extends Component {
@@ -79,6 +81,11 @@ class Home extends Component {
     return (
       <View>
         {lists}
+        <View className='add'>
+          <AtFab>
+            <Text>ADD</Text>
+          </AtFab>
+        </View>
       </View>
     );
   }
